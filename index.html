@@ -1,385 +1,528 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RECEITUÁRIO PEDIÁTRICO PREMIUM</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Receita PED | Prescrição Pediátrica Segura</title>
+    <meta
+      name="description"
+      content="Acervo completo de prescrição pediátrica segura com catálogo posológico, farmacoterapia, semiologia, diagnósticos, doses e materiais clínicos complementares."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="page-bg"></div>
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #ff69b4 0%, #dc143c 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-        }
-
-        .container {
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            max-width: 600px;
-            width: 100%;
-            padding: 40px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 4px solid #dc143c;
-            padding-bottom: 20px;
-        }
-
-        h1 {
-            color: #dc143c;
-            font-size: 28px;
-            margin-bottom: 10px;
-        }
-
-        .subtitle {
-            color: #ff69b4;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #333;
-            font-weight: 600;
-            font-size: 16px;
-        }
-
-        input[type="number"],
-        input[type="text"],
-        select,
-        textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #ff69b4;
-            border-radius: 10px;
-            font-size: 14px;
-            font-family: inherit;
-            transition: all 0.3s ease;
-        }
-
-        input[type="number"]:focus,
-        input[type="text"]:focus,
-        select:focus,
-        textarea:focus {
-            outline: none;
-            border-color: #dc143c;
-            box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
-        }
-
-        .input-group {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-
-        button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #ff69b4 0%, #dc143c 100%);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 18px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.4);
-        }
-
-        button:active {
-            transform: translateY(0);
-        }
-
-        .result-box {
-            display: none;
-            background: #fff5f7;
-            border-left: 5px solid #dc143c;
-            padding: 20px;
-            border-radius: 10px;
-            margin-top: 30px;
-        }
-
-        .result-box.show {
-            display: block;
-            animation: slideIn 0.3s ease;
-        }
-
-        @keyframes slideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .result-box h3 {
-            color: #dc143c;
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
-
-        .result-content {
-            color: #333;
-            line-height: 1.8;
-        }
-
-        .info-box {
-            background: #ffe0e6;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-left: 4px solid #ff69b4;
-        }
-
-        .info-box p {
-            color: #333;
-            font-size: 14px;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <header>
-            <h1>💊 RECEITUÁRIO PEDIÁTRICO PREMIUM</h1>
-            <p class="subtitle">Prescrições personalizadas para pediatria</p>
-        </header>
-
-        <div class="info-box">
-            <p><strong>⚠️ Aviso:</strong> Este sistema é um auxiliar. Sempre consulte um médico pediatra qualificado antes de prescrever qualquer medicamento.</p>
+    <header class="site-header">
+      <div class="container nav-wrap">
+        <div class="brand" aria-label="Logo do projeto">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 180 180" role="img" aria-label="Ícone de prescrição pediátrica">
+              <circle cx="90" cy="90" r="85" fill="#111827" />
+              <path d="M90 26c-15 0-29 6-39 16-10 10-16 24-16 39 0 15 6 29 16 39 10 10 24 16 39 16 15 0 29-6 39-16 10-10 16-24 16-39 0-15-6-29-16-39-10-10-24-16-39-16Zm-12 31h24v20h20v24H102v20H78v-20H58V77h20V57Z" fill="#fff" />
+              <path d="M50 129h80v18H50z" fill="#fff" opacity="0.96"/>
+            </svg>
+          </span>
+          <span class="brand-name">Receita PED</span>
         </div>
 
-        <form id="prescriptionForm">
-            <div class="form-group">
-                <label for="patientName">Nome do Paciente</label>
-                <input type="text" id="patientName" name="patientName" placeholder="Digite o nome completo" required>
-            </div>
+        <nav class="main-nav" aria-label="Navegação principal">
+          <a href="#features">Cobertura</a>
+          <a href="#library">Biblioteca</a>
+          <a href="#workflow">Fluxo</a>
+          <a href="#pricing">Kit</a>
+          <a href="#faq">FAQ</a>
+        </nav>
 
-            <div class="input-group">
-                <div class="form-group">
-                    <label for="age">Idade (anos)</label>
-                    <input type="number" id="age" name="age" min="0" max="18" placeholder="Ex: 5" required>
-                </div>
-
-                <div class="form-group">
-                    <label for="weight">Peso (kg)</label>
-                    <input type="number" id="weight" name="weight" min="0" max="100" step="0.1" placeholder="Ex: 20" required>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label for="diagnosis">Diagnóstico/Sintomas</label>
-                <select id="diagnosis" name="diagnosis" required>
-                    <option value="">Selecione o diagnóstico...</option>
-                    <option value="febre">Febre</option>
-                    <option value="tosse">Tosse</option>
-                    <option value="dor_garganta">Dor de Garganta</option>
-                    <option value="dor_ouvido">Dor de Ouvido</option>
-                    <option value="diarreia">Diarreia</option>
-                    <option value="vomito">Vômito</option>
-                    <option value="constipacao">Constipação</option>
-                    <option value="alergia">Alergia</option>
-                    <option value="dermatite">Dermatite</option>
-                    <option value="infeccao_urinaria">Infecção Urinária</option>
-                    <option value="pneumonia">Pneumonia</option>
-                    <option value="bronquite">Bronquite</option>
-                    <option value="asma">Asma</option>
-                    <option value="outro">Outro</option>
-                </select>
-            </div>
-
-            <div class="form-group">
-                <label for="additionalInfo">Informações Adicionais</label>
-                <textarea id="additionalInfo" name="additionalInfo" placeholder="Descreva sintomas adicionais, alergias conhecidas, medicamentos em uso, etc."></textarea>
-            </div>
-
-            <button type="submit">🔍 Gerar Prescrição</button>
-        </form>
-
-        <div class="result-box" id="resultBox">
-            <h3>📋 Prescrição Gerada</h3>
-            <div class="result-content" id="resultContent"></div>
+        <div class="nav-actions">
+          <a class="btn btn-secondary" href="#library">Ver acervo</a>
+          <a class="btn btn-primary" href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20quero%20saber%20mais%20sobre%20o%20acervo%20de%20prescri%C3%A7%C3%A3o%20pedi%C3%A1trica." target="_blank" rel="noreferrer">Falar no WhatsApp</a>
         </div>
-    </div>
+      </div>
+    </header>
 
-    <script>
-        document.getElementById('prescriptionForm').addEventListener('submit', function(e) {
-            e.preventDefault();
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Catalogação clínica e farmacoterapêutica</span>
+            <h1>Prescrição Pediátrica Segura</h1>
+            <p>
+              Sistema completo de apoio à prática pediátrica com catálogo posológico, farmacoterapia, semiologia,
+              diagnósticos, doses, fluxos e materiais de atualização clínica. Tudo em um pacote estruturado para apoio eficiente e seguro.
+            </p>
 
-            const patientName = document.getElementById('patientName').value;
-            const age = document.getElementById('age').value;
-            const weight = document.getElementById('weight').value;
-            const diagnosis = document.getElementById('diagnosis').value;
-            const additionalInfo = document.getElementById('additionalInfo').value;
+            <div class="hero-actions">
+              <a class="btn btn-primary" href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20quero%20conhecer%20o%20kit%20completo%20de%20prescri%C3%A7%C3%A3o%20pedi%C3%A1trica." target="_blank" rel="noreferrer">Solicitar acesso</a>
+              <a class="btn btn-secondary" href="#features">Ver cobertura</a>
+            </div>
 
-            const dosageGuides = {
-                febre: {
-                    name: 'Febre',
-                    medications: [
-                        'Paracetamol: 15 mg/kg a cada 6 horas (máximo 60 mg/kg/dia)',
-                        'Ibuprofeno: 10 mg/kg a cada 6-8 horas (máximo 30 mg/kg/dia)'
-                    ]
-                },
-                tosse: {
-                    name: 'Tosse',
-                    medications: [
-                        'Xarope expectorante conforme prescrição médica',
-                        'Hidratação abundante',
-                        'Inalação com soro fisiológico'
-                    ]
-                },
-                dor_garganta: {
-                    name: 'Dor de Garganta',
-                    medications: [
-                        'Paracetamol ou Ibuprofeno para dor',
-                        'Enxaguantes com água morna e sal',
-                        'Antibiótico se confirmado uso (conforme cultura)'
-                    ]
-                },
-                dor_ouvido: {
-                    name: 'Dor de Ouvido',
-                    medications: [
-                        'Analgésico: Paracetamol ou Ibuprofeno',
-                        'Otoscopia recomendada',
-                        'Antibiótico tópico ou sistêmico conforme necessário'
-                    ]
-                },
-                diarreia: {
-                    name: 'Diarreia',
-                    medications: [
-                        'Reidratação oral com soro fisiológico',
-                        'Probióticos conforme indicação',
-                        'Continuar alimentação normalmente',
-                        'Medicação apenas se indicado'
-                    ]
-                },
-                vomito: {
-                    name: 'Vômito',
-                    medications: [
-                        'Reidratação progressiva',
-                        'Pequenas refeições',
-                        'Antiemético se persistente (conforme prescrição médica)',
-                        'Investigar causa'
-                    ]
-                },
-                constipacao: {
-                    name: 'Constipação',
-                    medications: [
-                        'Aumentar ingestão de água e fibras',
-                        'Atividade física',
-                        'Laxante suave se necessário (conforme idade)'
-                    ]
-                },
-                alergia: {
-                    name: 'Alergia',
-                    medications: [
-                        'Anti-histamínico: conforme prescrição médica',
-                        'Identificar e evitar gatilhos',
-                        'Hidratação adequada'
-                    ]
-                },
-                dermatite: {
-                    name: 'Dermatite',
-                    medications: [
-                        'Hidratação da pele com emoliente',
-                        'Corticoide tópico leve conforme prescrição',
-                        'Evitar irritantes'
-                    ]
-                },
-                infeccao_urinaria: {
-                    name: 'Infecção Urinária',
-                    medications: [
-                        'Urocultura recomendada',
-                        'Antibiótico conforme resultado',
-                        'Hidratação adequada',
-                        'Hábitos de higiene'
-                    ]
-                },
-                pneumonia: {
-                    name: 'Pneumonia',
-                    medications: [
-                        'Antibiótico conforme prescrição médica',
-                        'Oxigênio se necessário',
-                        'Hidratação e repouso',
-                        'Requer acompanhamento médico'
-                    ]
-                },
-                bronquite: {
-                    name: 'Bronquite',
-                    medications: [
-                        'Expectorante conforme indicação',
-                        'Inalação com soro fisiológico',
-                        'Repouso e hidratação',
-                        'Medicação conforme prescrição'
-                    ]
-                },
-                asma: {
-                    name: 'Asma',
-                    medications: [
-                        'Broncodilatador de ação rápida conforme crise',
-                        'Corticoide inalado para manutenção',
-                        'Evitar gatilhos',
-                        'Acompanhamento pneumopediátrico'
-                    ]
-                },
-                outro: {
-                    name: 'Outro diagnóstico',
-                    medications: [
-                        'Consulte um médico pediatra qualificado',
-                        'Descreva os sintomas em detalhes ao profissional',
-                        'Siga sempre as recomendações médicas'
-                    ]
-                }
-            };
+            <div class="value-pills" aria-label="Pontos principais do acervo">
+              <span>Manual integral</span>
+              <span>Catálogo posológico</span>
+              <span>Farmacoterapia</span>
+              <span>Atualização contínua</span>
+            </div>
 
-            const guide = dosageGuides[diagnosis] || dosageGuides.outro;
+            <ul class="hero-stats" aria-label="Estatísticas do acervo">
+              <li><strong>330</strong><span>temas em revisão</span></li>
+              <li><strong>498</strong><span>medicamentos catalogados</span></li>
+              <li><strong>11</strong><span>fontes e blocos integrados</span></li>
+            </ul>
+          </div>
 
-            const prescriptionHTML = `
-                <p><strong>Paciente:</strong> ${patientName}</p>
-                <p><strong>Idade:</strong> ${age} anos | <strong>Peso:</strong> ${weight} kg</p>
-                <p><strong>Diagnóstico:</strong> ${guide.name}</p>
-                ${additionalInfo ? `<p><strong>Informações Adicionais:</strong> ${additionalInfo}</p>` : ''}
-                <hr style="margin: 15px 0; border: none; border-top: 2px solid #ff69b4;">
-                <h4 style="color: #dc143c; margin-top: 15px; margin-bottom: 10px;">Orientações de Tratamento:</h4>
-                <ul style="margin-left: 20px; line-height: 1.8;">
-                    ${guide.medications.map(med => `<li>${med}</li>`).join('')}
-                </ul>
-                <p style="margin-top: 20px; padding: 10px; background: #ffe0e6; border-radius: 5px; font-size: 13px;">
-                    <strong>⚠️ Nota Importante:</strong> Esta prescrição é apenas um auxílio. Sempre consulte um médico pediatra qualificado antes de qualquer tratamento.
+          <div class="hero-visual" aria-label="Visualização do acervo pediátrico">
+            <div class="mockup-wrap">
+              <div class="mockup-card medical-card">
+                <div class="mockup-header">
+                  <div class="brand-inline">
+                    <span class="mini-icon mini-med" aria-hidden="true">
+                      <svg viewBox="0 0 180 180" role="img" aria-label="Ícone de medicação">
+                        <circle cx="90" cy="90" r="85" fill="#111827" />
+                        <path d="M90 26c-15 0-29 6-39 16-10 10-16 24-16 39 0 15 6 29 16 39 10 10 24 16 39 16 15 0 29-6 39-16 10-10 16-24 16-39 0-15-6-29-16-39-10-10-24-16-39-16Zm-12 31h24v20h20v24H102v20H78v-20H58V77h20V57Z" fill="#fff" />
+                      </svg>
+                    </span>
+                    <span class="mini-title">PED</span>
+                  </div>
+                </div>
+
+                <h2>Manual Integral de Prescrição Segura</h2>
+                <p>
+                  Catálogo posológico, farmacoterapia, diagnósticos e orientações de uso em uma base unificada para tomada de decisão clínica segura.
                 </p>
-            `;
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            document.getElementById('resultContent').innerHTML = prescriptionHTML;
-            document.getElementById('resultBox').classList.add('show');
-        });
-    </script>
-</body>
+      <section class="stats-bar">
+        <div class="container stats-grid">
+          <div class="stat-item reveal">
+            <strong>Manual</strong>
+            <span>Integral de prescrição</span>
+          </div>
+          <div class="stat-item reveal">
+            <strong>Farmaco</strong>
+            <span>Guia e atualizações</span>
+          </div>
+          <div class="stat-item reveal">
+            <strong>Semiologia</strong>
+            <span>Achados clínicos e sinais</span>
+          </div>
+          <div class="stat-item reveal">
+            <strong>Doses</strong>
+            <span>Transcrição e verificação</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="features section-spacing" id="features">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Cobertura</span>
+            <h2>Uma base completa para prescrição, monitoramento e condução clínica.</h2>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card reveal">
+              <div class="icon-box">01</div>
+              <h3>Manual integral</h3>
+              <p>Estrutura consolidada com orientação clínica e apoio à prescrição segura em pediatria.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">02</div>
+              <h3>Catálogo posológico</h3>
+              <p>Base de medicamentos, doses, apresentações, atualizações e fichas revisadas periodicamente.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">03</div>
+              <h3>Semiologia pediátrica</h3>
+              <p>Identificação de sinais e achados discriminativos para orientar diagnóstico e decisão terapêutica.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">04</div>
+              <h3>Diagnósticos</h3>
+              <p>Banco estruturado com centenas de diagnósticos e referências para apoio clínico do dia a dia.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">05</div>
+              <h3>Farmacoterapia</h3>
+              <p>Guia de uso terapêutico, protocolos, adaptações e suporte para escolhas medicamentosas.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">06</div>
+              <h3>Doses e transcrição</h3>
+              <p>Material de cálculo, doses orientadas e organização para prescrição mais clara e menos sujeita a erro.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">07</div>
+              <h3>Fluxos de emergência</h3>
+              <p>Protocolos rápidos para contextos clínicos de urgência e tomada de decisão em ambiente acelerado.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">08</div>
+              <h3>Atualização contínua</h3>
+              <p>Registro diário e revisão documental com novos achados, atualizações e ajustes de catálogo.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">09</div>
+              <h3>Integridade documental</h3>
+              <p>Estrutura de revisão e organização dos arquivos, preservando fontes, versões e rastreio operacional.</p>
+            </article>
+            <article class="feature-card reveal">
+              <div class="icon-box">10</div>
+              <h3>Suporte ao clínico</h3>
+              <p>Material pensado para acelerar a consulta, reduzir ruído e fortalecer a segurança na prescrição.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="prescription-builder section-spacing" id="builder">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Prescrição</span>
+            <h2>Campos essenciais para gerar a prescrição com segurança.</h2>
+          </div>
+
+          <div class="builder-shell">
+            <div class="builder-tabs" role="tablist" aria-label="Campos da prescrição">
+              <button class="builder-tab active" type="button" role="tab" aria-selected="true" aria-controls="panel-peso" id="tab-peso" data-tab="peso">Peso</button>
+              <button class="builder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-idade" id="tab-idade" data-tab="idade">Idade</button>
+              <button class="builder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-diagnostico" id="tab-diagnostico" data-tab="diagnostico">Diagnóstico</button>
+              <button class="builder-tab" type="button" role="tab" aria-selected="false" aria-controls="panel-prescricao" id="tab-prescricao" data-tab="prescricao">Prescrição</button>
+            </div>
+
+            <div class="builder-panels">
+              <div class="builder-panel active" id="panel-peso" role="tabpanel" aria-labelledby="tab-peso">
+                <div class="field-grid">
+                  <label>
+                    <span>Peso atual</span>
+                    <input type="number" placeholder="Ex.: 18,5 kg" />
+                  </label>
+                  <label>
+                    <span>Faixa de peso</span>
+                    <input type="text" placeholder="Ex.: 10 a 20 kg" />
+                  </label>
+                  <label>
+                    <span>Escala de dose</span>
+                    <input type="text" placeholder="Ex.: mg/kg/dia" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="builder-panel" id="panel-idade" role="tabpanel" aria-labelledby="tab-idade" hidden>
+                <div class="field-grid">
+                  <label>
+                    <span>Idade</span>
+                    <input type="text" placeholder="Ex.: 6 anos" />
+                  </label>
+                  <label>
+                    <span>Faixa etária</span>
+                    <input type="text" placeholder="Ex.: 5 a 9 anos" />
+                  </label>
+                  <label>
+                    <span>Observações</span>
+                    <input type="text" placeholder="Ex.: uso em dose única" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="builder-panel" id="panel-diagnostico" role="tabpanel" aria-labelledby="tab-diagnostico" hidden>
+                <div class="field-grid">
+                  <label>
+                    <span>Diagnóstico principal</span>
+                    <input type="text" placeholder="Ex.: otite média aguda" />
+                  </label>
+                  <label>
+                    <span>Quadro clínico</span>
+                    <input type="text" placeholder="Ex.: febre + dor + secreção" />
+                  </label>
+                  <label>
+                    <span>Critérios de risco</span>
+                    <input type="text" placeholder="Ex.: alergia, falha terapêutica" />
+                  </label>
+                </div>
+              </div>
+
+              <div class="builder-panel" id="panel-prescricao" role="tabpanel" aria-labelledby="tab-prescricao" hidden>
+                <div class="field-grid">
+                  <label>
+                    <span>Medicamento</span>
+                    <input type="text" placeholder="Ex.: amoxicilina" />
+                  </label>
+                  <label>
+                    <span>Apresentação</span>
+                    <input type="text" placeholder="Ex.: 500 mg/5 mL" />
+                  </label>
+                  <label>
+                    <span>Posologia</span>
+                    <input type="text" placeholder="Ex.: 10 mg/kg/dose" />
+                  </label>
+                </div>
+                <div class="builder-actions">
+                  <button class="btn btn-primary" type="button">Gerar prescrição</button>
+                  <button class="btn btn-secondary" type="button">Salvar modelo</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="library section-spacing" id="library">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Acervo</span>
+            <h2>Materiais anexados integrados ao ecossistema da solução.</h2>
+          </div>
+
+          <div class="library-grid">
+            <a class="resource-card reveal" href="Manual_Integral_Prescricao_Pediatrica_Segura.pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">PDF principal</span>
+              <h3>Manual Integral de Prescrição Pediátrica Segura</h3>
+              <p>Base principal do acervo com orientações para prescrição segura e clínica pediátrica.</p>
+            </a>
+
+            <a class="resource-card reveal" href="Guia_Farmacoterapia_Pediatrica.pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Farmacoterapia</span>
+              <h3>Guia de Farmacoterapia Pediátrica</h3>
+              <p>Visão geral de medicamentos e decisões terapêuticas na prática pediátrica.</p>
+            </a>
+
+            <a class="resource-card reveal" href="NEXO_Farmacoterapia_Pediatrica_Consolidada_Auditavel.pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Consolidado</span>
+              <h3>NEXO Farmacoterapia Pediátrica</h3>
+              <p>Compilação auditável e consolidada para apoio clínico e revisão farmacoterapêutica.</p>
+            </a>
+
+            <a class="resource-card" href="Enciclop%C3%A9dia%20Master%20de%20Semiologia%20Pedi%C3%A1trica%20-%20Sinais%20Patognom%C3%B4nicos%20e%20Discriminativos.pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Semiologia</span>
+              <h3>Enciclopédia Master de Semiologia Pediátrica</h3>
+              <p>Catálogo de sinais patognomônicos e discriminativos para diagnóstico clínico.</p>
+            </a>
+
+            <a class="resource-card" href="diagnosticos_pediatria_1500.pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Diagnóstico</span>
+              <h3>Diagnósticos Pediatria 1500</h3>
+              <p>Relação estrutural de diagnósticos e referências para o atendimento pediátrico.</p>
+            </a>
+
+            <a class="resource-card" href="catalogo-base(1).pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Catalogação</span>
+              <h3>Catálogo Base</h3>
+              <p>Base de referência para a composição do catálogo posológico pediátrico.</p>
+            </a>
+
+            <a class="resource-card" href="Transcri%C3%A7%C3%A3o%20Organizada%20de%20Doses%20Pedi%C3%A1tricas.docx" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Doses</span>
+              <h3>Transcrição Organizada de Doses Pediátricas</h3>
+              <p>Arquivo de apoio para padronização das doses e cálculo pediátrico.</p>
+            </a>
+
+            <a class="resource-card" href="PedPresc_Agil_Instrucoes.docx" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Instruções</span>
+              <h3>PedPresc Ágil</h3>
+              <p>Orientações rápidas para uma prescrição ágil, segura e funcional.</p>
+            </a>
+
+            <a class="resource-card" href="PedWB_Integracao_Progressiva.md" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Registro</span>
+              <h3>PedWB — Integração Progressiva</h3>
+              <p>Registro documental do processo progressivo de integração e evolução do conteúdo.</p>
+            </a>
+
+            <a class="resource-card" href="Atualiza%C3%A7%C3%A3o%20di%C3%A1ria%20%E2%80%94%20Cat%C3%A1logo%20Posol%C3%B3gico%20Pedi%C3%A1trico%20%E2%80%94%2026_09_2026.md" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Atualização</span>
+              <h3>Atualização Diária do Catálogo Posológico</h3>
+              <p>Resumo dos novos achados, manutenção e revisão documental diária do material.</p>
+            </a>
+
+            <a class="resource-card" href="ARQUIVO_A+++++_NEXO_Clinical_Nucleo_Global_Tratamentos.pdf" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Tratamentos</span>
+              <h3>NEXO Clinical — Núcleo Global de Tratamentos</h3>
+              <p>Estrutura de suporte para tratamento e decisões clínicas com escopo ampliado.</p>
+            </a>
+
+            <a class="resource-card" href="prompt_mestre.png" target="_blank" rel="noreferrer">
+              <span class="resource-tag">Referência visual</span>
+              <h3>Prompt Mestre</h3>
+              <p>Base visual da orientação de identidade e estrutura do produto para o site e a marca.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="workflow section-spacing" id="workflow">
+        <div class="container">
+          <div class="section-heading narrow">
+            <span class="eyebrow">Fluxo</span>
+            <h2>De como o material é organizado para uso prático no dia a dia.</h2>
+          </div>
+
+          <div class="timeline">
+            <div class="timeline-item reveal">
+              <span class="step-number">1</span>
+              <div>
+                <h3>Coleta</h3>
+                <p>Reunião dos materiais de farmacoterapia, doses, diagnósticos, semiologia e referências.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <span class="step-number">2</span>
+              <div>
+                <h3>Estrutura</h3>
+                <p>Organização em blocos para leitura rápida, interpretação segura e uso em contexto clínico.</p>
+              </div>
+            </div>
+            <div class="timeline-item reveal">
+              <span class="step-number">3</span>
+              <div>
+                <h3>Aplicação</h3>
+                <p>Aplicação prática em prescrição, acompanhamento e suporte ao raciocínio pediátrico.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pricing section-spacing" id="pricing">
+        <div class="container">
+          <div class="section-heading">
+            <span class="eyebrow">Kit</span>
+            <h2>Escolha o nível ideal de acesso ao acervo.</h2>
+          </div>
+
+          <div class="pricing-grid">
+            <article class="price-card reveal">
+              <span class="plan-name">Essencial</span>
+              <h3>R$ 79</h3>
+              <p>/mês</p>
+              <ul>
+                <li>Manual básico</li>
+                <li>Catálogo posológico</li>
+                <li>Guia de doses</li>
+              </ul>
+              <a class="btn btn-secondary" href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20quero%20o%20kit%20Essencial%20de%20prescri%C3%A7%C3%A3o%20pedi%C3%A1trica." target="_blank" rel="noreferrer">Quero esse</a>
+            </article>
+
+            <article class="price-card featured reveal">
+              <span class="plan-name">Completo</span>
+              <h3>R$ 149</h3>
+              <p>/mês</p>
+              <ul>
+                <li>Manual integral</li>
+                <li>Farmacoterapia + semiologia</li>
+                <li>Diagnósticos e atualizações</li>
+              </ul>
+              <a class="btn btn-primary" href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20quero%20o%20pacote%20completo%20do%20acervo%20pedi%C3%A1trico." target="_blank" rel="noreferrer">Mais procurado</a>
+            </article>
+
+            <article class="price-card reveal">
+              <span class="plan-name">Institucional</span>
+              <h3>Custom</h3>
+              <p>sob consulta</p>
+              <ul>
+                <li>Equipe clínica</li>
+                <li>Banco em escala</li>
+                <li>Suporte e evoluções</li>
+              </ul>
+              <a class="btn btn-secondary" href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20quero%20discutir%20o%20acesso%20institucional%20do%20acervo." target="_blank" rel="noreferrer">Falar com especialista</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="faq section-spacing" id="faq">
+        <div class="container faq-wrap">
+          <div class="section-heading narrow">
+            <span class="eyebrow">Perguntas frequentes</span>
+            <h2>Principais dúvidas sobre o material e o acesso.</h2>
+          </div>
+
+          <div class="faq-list">
+            <div class="faq-item active reveal">
+              <button class="faq-question" type="button" aria-expanded="true">
+                Quais arquivos fazem parte do acervo?
+              </button>
+              <div class="faq-answer">
+                <p>O pacote reúne o manual integral, guia de farmacoterapia, catálogo posológico, semiologia, diagnósticos, doses, instruções clínicas e material de atualização diária.</p>
+              </div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                O conteúdo é pensado para uso prático?
+              </button>
+              <div class="faq-answer">
+                <p>Sim. A estrutura foi organizada em blocos e categorias para facilitar leitura, consulta e aplicação em contexto clínico e de prescrição.</p>
+              </div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                Posso acessar tudo pelo celular?
+              </button>
+              <div class="faq-answer">
+                <p>Sim. A interface é responsiva e os materiais podem ser abertos em navegador mobile, tablet ou desktop com facilidade.</p>
+              </div>
+            </div>
+            <div class="faq-item reveal">
+              <button class="faq-question" type="button" aria-expanded="false">
+                Há integração com WhatsApp?
+              </button>
+              <div class="faq-answer">
+                <p>Sim. Todas as ações de conversão e acesso ao atendimento podem ser encaminhadas diretamente para o WhatsApp do responsável.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-wrap">
+        <div>
+          <div class="brand footer-brand">
+            <span class="brand-mark small" aria-hidden="true">
+              <svg viewBox="0 0 180 180" role="img" aria-label="Ícone da marca">
+                <circle cx="90" cy="90" r="85" fill="#111827" />
+                <path d="M90 26c-15 0-29 6-39 16-10 10-16 24-16 39 0 15 6 29 16 39 10 10 24 16 39 16 15 0 29-6 39-16 10-10 16-24 16-39 0-15-6-29-16-39-10-10-24-16-39-16Zm-12 31h24v20h20v24H102v20H78v-20H58V77h20V57Z" fill="#fff" />
+              </svg>
+            </span>
+            <span class="brand-name">Receita PED</span>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <a href="#features">Cobertura</a>
+          <a href="#library">Biblioteca</a>
+          <a href="#pricing">Kit</a>
+        </div>
+
+        <a class="btn btn-primary" href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20quero%20solicitar%20a%20vers%C3%A3o%20completa%20do%20acervo%20de%20prescri%C3%A7%C3%A3o%20pedi%C3%A1trica." target="_blank" rel="noreferrer">Solicitar proposta</a>
+      </div>
+      <div class="container footer-meta">
+        <span>© <span id="year"></span> Receita PED</span>
+        <span>Prescrição pediátrica segura e informação clínica estruturada</span>
+      </div>
+    </footer>
+
+    <a
+      class="whatsapp-float"
+      href="https://wa.me/5533999874699?text=Ol%C3%A1%2C%20vim%20pelo%20site%20e%20quero%20falar%20sobre%20o%20acervo%20pedi%C3%A1trico."
+      target="_blank"
+      rel="noreferrer"
+      aria-label="Falar no WhatsApp"
+      title="Falar no WhatsApp"
+    >
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M20.52 3.48A11.86 11.86 0 0 0 12.1 0C5.45 0 .02 5.42.02 12.08c0 2.12.56 4.2 1.62 6.03L0 24l6.04-1.58a11.97 11.97 0 0 0 5.9 1.78h.01c6.66 0 12.08-5.42 12.08-12.08 0-3.23-1.26-6.27-3.48-8.54Zm-8.42 18.54h-.01a9.93 9.93 0 0 1-5.06-1.39l-.36-.22-3.58.94 1-3.49-.24-.36A9.88 9.88 0 0 1 2.2 12.1c0-5.47 4.45-9.92 9.92-9.92 2.65 0 5.14 1.03 7.02 2.9a9.9 9.9 0 0 1 2.9 7.03c0 5.47-4.45 9.92-9.92 9.92Zm5.44-7.43c-.3-.15-1.77-.87-2.04-.97-.27-.1-.47-.15-.67.15-.2.3-.76.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.28-.47-2.44-1.5-.9-.8-1.52-1.8-1.7-2.1-.18-.3-.02-.47.13-.62.14-.14.3-.35.45-.53.15-.17.2-.3.3-.5.1-.2.05-.38-.02-.53-.07-.15-.67-1.62-.92-2.22-.24-.57-.49-.5-.67-.51l-.57-.01c-.2 0-.52.08-.8.38-.28.3-1.08 1.05-1.08 2.57s1.1 2.98 1.25 3.18c.15.2 2.15 3.29 5.2 4.62.73.31 1.3.5 1.74.64.73.23 1.4.2 1.92.12.59-.09 1.77-.72 2.02-1.41.25-.7.25-1.3.18-1.42-.07-.12-.27-.2-.57-.35Z" fill="currentColor"/>
+      </svg>
+    </a>
+
+    <script src="script.js"></script>
+  </body>
 </html>
