@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RECEITUÁRIO PEDIÁTRICO PREMIUM</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #ff69b4 0%, #dc143c 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 4px solid #dc143c;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            color: #dc143c;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #ff69b4;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+        }
+
+        input[type="number"],
+        input[type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+            font-size: 14px;
+            font-family: inherit;
+            transition: all 0.3s ease;
+        }
+
+        input[type="number"]:focus,
+        input[type="text"]:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #dc143c;
+            box-shadow: 0 0 10px rgba(220, 20, 60, 0.3);
+        }
+
+        .input-group {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #ff69b4 0%, #dc143c 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(220, 20, 60, 0.4);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .result-box {
+            display: none;
+            background: #fff5f7;
+            border-left: 5px solid #dc143c;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+        }
+
+        .result-box.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .result-box h3 {
+            color: #dc143c;
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+
+        .result-content {
+            color: #333;
+            line-height: 1.8;
+        }
+
+        .info-box {
+            background: #ffe0e6;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #ff69b4;
+        }
+
+        .info-box p {
+            color: #333;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💊 RECEITUÁRIO PEDIÁTRICO PREMIUM</h1>
+            <p class="subtitle">Prescrições personalizadas para pediatria</p>
+        </header>
+
+        <div class="info-box">
+            <p><strong>⚠️ Aviso:</strong> Este sistema é um auxiliar. Sempre consulte um médico pediatra qualificado antes de prescrever qualquer medicamento.</p>
+        </div>
+
+        <form id="prescriptionForm">
+            <div class="form-group">
+                <label for="patientName">Nome do Paciente</label>
+                <input type="text" id="patientName" name="patientName" placeholder="Digite o nome completo" required>
+            </div>
+
+            <div class="input-group">
+                <div class="form-group">
+                    <label for="age">Idade (anos)</label>
+                    <input type="number" id="age" name="age" min="0" max="18" placeholder="Ex: 5" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="weight">Peso (kg)</label>
+                    <input type="number" id="weight" name="weight" min="0" max="100" step="0.1" placeholder="Ex: 20" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="diagnosis">Diagnóstico/Sintomas</label>
+                <select id="diagnosis" name="diagnosis" required>
+                    <option value="">Selecione o diagnóstico...</option>
+                    <option value="febre">Febre</option>
+                    <option value="tosse">Tosse</option>
+                    <option value="dor_garganta">Dor de Garganta</option>
+                    <option value="dor_ouvido">Dor de Ouvido</option>
+                    <option value="diarreia">Diarreia</option>
+                    <option value="vomito">Vômito</option>
+                    <option value="constipacao">Constipação</option>
+                    <option value="alergia">Alergia</option>
+                    <option value="dermatite">Dermatite</option>
+                    <option value="infeccao_urinaria">Infecção Urinária</option>
+                    <option value="pneumonia">Pneumonia</option>
+                    <option value="bronquite">Bronquite</option>
+                    <option value="asma">Asma</option>
+                    <option value="outro">Outro</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="additionalInfo">Informações Adicionais</label>
+                <textarea id="additionalInfo" name="additionalInfo" placeholder="Descreva sintomas adicionais, alergias conhecidas, medicamentos em uso, etc."></textarea>
+            </div>
+
+            <button type="submit">🔍 Gerar Prescrição</button>
+        </form>
+
+        <div class="result-box" id="resultBox">
+            <h3>📋 Prescrição Gerada</h3>
+            <div class="result-content" id="resultContent"></div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('prescriptionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const patientName = document.getElementById('patientName').value;
+            const age = document.getElementById('age').value;
+            const weight = document.getElementById('weight').value;
+            const diagnosis = document.getElementById('diagnosis').value;
+            const additionalInfo = document.getElementById('additionalInfo').value;
+
+            const dosageGuides = {
+                febre: {
+                    name: 'Febre',
+                    medications: [
+                        'Paracetamol: 15 mg/kg a cada 6 horas (máximo 60 mg/kg/dia)',
+                        'Ibuprofeno: 10 mg/kg a cada 6-8 horas (máximo 30 mg/kg/dia)'
+                    ]
+                },
+                tosse: {
+                    name: 'Tosse',
+                    medications: [
+                        'Xarope expectorante conforme prescrição médica',
+                        'Hidratação abundante',
+                        'Inalação com soro fisiológico'
+                    ]
+                },
+                dor_garganta: {
+                    name: 'Dor de Garganta',
+                    medications: [
+                        'Paracetamol ou Ibuprofeno para dor',
+                        'Enxaguantes com água morna e sal',
+                        'Antibiótico se confirmado uso (conforme cultura)'
+                    ]
+                },
+                dor_ouvido: {
+                    name: 'Dor de Ouvido',
+                    medications: [
+                        'Analgésico: Paracetamol ou Ibuprofeno',
+                        'Otoscopia recomendada',
+                        'Antibiótico tópico ou sistêmico conforme necessário'
+                    ]
+                },
+                diarreia: {
+                    name: 'Diarreia',
+                    medications: [
+                        'Reidratação oral com soro fisiológico',
+                        'Probióticos conforme indicação',
+                        'Continuar alimentação normalmente',
+                        'Medicação apenas se indicado'
+                    ]
+                },
+                vomito: {
+                    name: 'Vômito',
+                    medications: [
+                        'Reidratação progressiva',
+                        'Pequenas refeições',
+                        'Antiemético se persistente (conforme prescrição médica)',
+                        'Investigar causa'
+                    ]
+                },
+                constipacao: {
+                    name: 'Constipação',
+                    medications: [
+                        'Aumentar ingestão de água e fibras',
+                        'Atividade física',
+                        'Laxante suave se necessário (conforme idade)'
+                    ]
+                },
+                alergia: {
+                    name: 'Alergia',
+                    medications: [
+                        'Anti-histamínico: conforme prescrição médica',
+                        'Identificar e evitar gatilhos',
+                        'Hidratação adequada'
+                    ]
+                },
+                dermatite: {
+                    name: 'Dermatite',
+                    medications: [
+                        'Hidratação da pele com emoliente',
+                        'Corticoide tópico leve conforme prescrição',
+                        'Evitar irritantes'
+                    ]
+                },
+                infeccao_urinaria: {
+                    name: 'Infecção Urinária',
+                    medications: [
+                        'Urocultura recomendada',
+                        'Antibiótico conforme resultado',
+                        'Hidratação adequada',
+                        'Hábitos de higiene'
+                    ]
+                },
+                pneumonia: {
+                    name: 'Pneumonia',
+                    medications: [
+                        'Antibiótico conforme prescrição médica',
+                        'Oxigênio se necessário',
+                        'Hidratação e repouso',
+                        'Requer acompanhamento médico'
+                    ]
+                },
+                bronquite: {
+                    name: 'Bronquite',
+                    medications: [
+                        'Expectorante conforme indicação',
+                        'Inalação com soro fisiológico',
+                        'Repouso e hidratação',
+                        'Medicação conforme prescrição'
+                    ]
+                },
+                asma: {
+                    name: 'Asma',
+                    medications: [
+                        'Broncodilatador de ação rápida conforme crise',
+                        'Corticoide inalado para manutenção',
+                        'Evitar gatilhos',
+                        'Acompanhamento pneumopediátrico'
+                    ]
+                },
+                outro: {
+                    name: 'Outro diagnóstico',
+                    medications: [
+                        'Consulte um médico pediatra qualificado',
+                        'Descreva os sintomas em detalhes ao profissional',
+                        'Siga sempre as recomendações médicas'
+                    ]
+                }
+            };
+
+            const guide = dosageGuides[diagnosis] || dosageGuides.outro;
+
+            const prescriptionHTML = `
+                <p><strong>Paciente:</strong> ${patientName}</p>
+                <p><strong>Idade:</strong> ${age} anos | <strong>Peso:</strong> ${weight} kg</p>
+                <p><strong>Diagnóstico:</strong> ${guide.name}</p>
+                ${additionalInfo ? `<p><strong>Informações Adicionais:</strong> ${additionalInfo}</p>` : ''}
+                <hr style="margin: 15px 0; border: none; border-top: 2px solid #ff69b4;">
+                <h4 style="color: #dc143c; margin-top: 15px; margin-bottom: 10px;">Orientações de Tratamento:</h4>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    ${guide.medications.map(med => `<li>${med}</li>`).join('')}
+                </ul>
+                <p style="margin-top: 20px; padding: 10px; background: #ffe0e6; border-radius: 5px; font-size: 13px;">
+                    <strong>⚠️ Nota Importante:</strong> Esta prescrição é apenas um auxílio. Sempre consulte um médico pediatra qualificado antes de qualquer tratamento.
+                </p>
+            `;
+
+            document.getElementById('resultContent').innerHTML = prescriptionHTML;
+            document.getElementById('resultBox').classList.add('show');
+        });
+    </script>
+</body>
+</html>
