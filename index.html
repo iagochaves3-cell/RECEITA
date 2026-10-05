@@ -91,7 +91,9 @@
         </div>
 
         <div class="consultation-wrapper">
-          <form id="prescriptionForm" class="prescription-form">
+          <p id="prescriptionUnavailable" role="status">A geração de prescrições está indisponível. Esta página ainda não fornece medicamentos, doses ou uma receita validada.</p>
+          <form id="prescriptionForm" class="prescription-form" aria-describedby="prescriptionUnavailable" onsubmit="return false;">
+            <fieldset disabled style="border: 0; padding: 0; margin: 0; min-width: 0;">
             <div class="form-group">
               <label for="idade">Idade</label>
               <div class="input-group">
@@ -128,13 +130,14 @@
             </div>
 
             <button type="submit" class="btn btn-primary btn-lg">
-              Gerar Prescrição
+              Geração indisponível
             </button>
+            </fieldset>
           </form>
 
           <div id="resultadoPrescrição" class="result-container" style="display: none;">
             <div class="result-header">
-              <h3>✓ Prescrição Gerada</h3>
+              <h3>Prescrição indisponível</h3>
               <button type="button" class="btn-close" onclick="document.getElementById('resultadoPrescrição').style.display = 'none'">✕</button>
             </div>
 
@@ -143,8 +146,8 @@
             </div>
 
             <div class="result-actions">
-              <button type="button" class="btn btn-secondary" onclick="printRx()">Imprimir</button>
-              <button type="button" class="btn btn-secondary" onclick="copyRx()">Copiar</button>
+              <button type="button" class="btn btn-secondary" disabled>Imprimir</button>
+              <button type="button" class="btn btn-secondary" disabled>Copiar</button>
               <button type="button" class="btn btn-secondary" onclick="document.getElementById('resultadoPrescrição').style.display = 'none'">Fechar</button>
             </div>
           </div>
@@ -272,7 +275,7 @@
             <strong>Receita PED</strong>
             <p>Prescrição pediátrica segura. Base de conhecimento integrada com catálogo, farmacoterapia, semiologia e fluxos clínicos.</p>
           </div>
-          <div class="footer-links">
+          <div class="footer-links" style="flex-wrap: wrap;">
             <strong>Navegação</strong>
             <a href="#consulta">Consulta</a>
             <a href="#referencia">Referência</a>
