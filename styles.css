@@ -914,3 +914,8 @@ select {
     align-items: flex-start;
   }
 }
+
+/* No clinical output may be printed while integration is unavailable. */
+@media print {
+  #prescriptionForm, #resultadoPrescrição { display: none !important; }
+}
